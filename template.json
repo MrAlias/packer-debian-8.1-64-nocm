@@ -87,7 +87,8 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "0.0.1"
+                "version": "0.0.1",
+				"description": "Debian Jessie ({{user `debian_version`}}-amd64) no configuration management installed."
             }
         }]
     ]
