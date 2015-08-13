@@ -1,6 +1,6 @@
 {
     "push": {
-      "name": "MrAlias/debian-8.1-amd64-nocm",
+      "name": "MrAlias/debian_81_amd64_nocm",
       "address": "https://atlas.hashicorp.com",
       "vcs": true
     },
