@@ -16,6 +16,7 @@ sed -i '/GSSAPIAuthentication yes/,${s//GSSAPIAuthentication no/;b};$q1' $SSHD_C
 grep -q 'secure_path' /etc/sudoers \
 	|| sed -i -e '/Defaults\s\+env_reset/a Defaults\tsecure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"' /etc/sudoers
 sed -i -e 's/^%sudo.*/%sudo ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
+echo "Defaults !requiretty" >> /etc/sudoers
 
 # Remove 5s grub timeout to speed up booting
 cat <<EOF > /etc/default/grub
