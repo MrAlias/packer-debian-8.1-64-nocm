@@ -13,10 +13,16 @@ echo "Cleaning up dhcp leases"
 rm /var/lib/dhcp/*
 
 echo "Cleaning up udev rules"
-rm /etc/udev/rules.d/70-persistent-net.rules
-mkdir /etc/udev/rules.d/70-persistent-net.rules
-rm -rf /dev/.udev/
-rm /lib/udev/rules.d/75-persistent-net-generator.rules
+if [ -e /etc/udev/rules.d/70-persistent-net.rules ]; then
+    rm /etc/udev/rules.d/70-persistent-net.rules
+    mkdir /etc/udev/rules.d/70-persistent-net.rules
+fi
+if [ -e /dev/.udev/ ]; then
+    rm -rf /dev/.udev/
+fi
+if [ -e /lib/udev/rules.d/75-persistent-net-generator.rules ]; then
+    rm /lib/udev/rules.d/75-persistent-net-generator.rules
+fi
 
 echo "Adding a 2 sec delay to the interface up, to make the dhclient happy"
 echo "pre-up sleep 2" >> /etc/network/interfaces
